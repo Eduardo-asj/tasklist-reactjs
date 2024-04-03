@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/header.scss';
 
 export function Header() {
   // State to manage the visibility of the navigation menu
   const [isMenuOpen, setMenuOpen] = useState(false);
+  // Ref to the navigation menu
+  const menuRef = useRef(null);
 
   // Function to toggle the visibility of the navigation menu
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
+
+  // Function to close the menu when user clicks outside of it
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  };
+
+  // Effect to add event listener when the component mounts
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className='header'>
@@ -16,7 +34,7 @@ export function Header() {
         <img src='/logo.svg' alt='to.do' className='logo' />
         <h1 className='title'>To-Do App</h1>
       </div>
-      <nav className={`navigation ${isMenuOpen ? 'open' : ''}`}>
+      <nav ref={menuRef} className={`navigation ${isMenuOpen ? 'open' : ''}`}>
         <ul className='nav-list'>
           <li className='nav-item'>
             <a href='#'>Home</a>
