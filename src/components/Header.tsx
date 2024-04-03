@@ -19,12 +19,21 @@ export function Header() {
     }
   };
 
-  // Effect to add event listener when the component mounts
+  // Function to close the menu when "Esc" key is pressed
+  const handleKeyPress = (event) => {
+    if (event.key === 'Escape') {
+      setMenuOpen(false);
+    }
+  };
+
+  // Effect to add event listeners when the component mounts
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
-    // Cleanup function to remove event listener when component unmounts
+    document.addEventListener('keydown', handleKeyPress);
+    // Cleanup function to remove event listeners when component unmounts
     return () => {
       document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
 
