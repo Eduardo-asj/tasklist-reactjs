@@ -56,6 +56,14 @@ export function TaskList() {
     setEditingTaskTitle('');
   }
 
+  function handleMarkAllTasksAsComplete() {
+    const updatedTasks = tasks.map((task) => ({
+      ...task,
+      isComplete: true,
+    }));
+    setTasks(updatedTasks);
+  }
+
   return (
     <section className='task-list container'>
       <header>
@@ -76,6 +84,9 @@ export function TaskList() {
             <FiCheckSquare size={16} color='#fff' />
           </button>
         </div>
+        <button onClick={handleMarkAllTasksAsComplete}>
+          Mark All as Complete
+        </button>
       </header>
 
       <main>
