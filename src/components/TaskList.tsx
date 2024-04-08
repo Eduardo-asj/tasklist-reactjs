@@ -81,7 +81,7 @@ export function TaskList() {
             data-testid='add-task-button'
             onClick={handleCreateNewTask}
           >
-            <FiCheckSquare size={16} color='#fff' />
+            <FiCheckSquare size={16} color='#FFC0CB' />
           </button>
         </div>
         <button onClick={handleMarkAllTasksAsComplete}>
