@@ -51,9 +51,9 @@ export function Header() {
           <li className='nav-item'>
             <a href='#'>About</a>
           </li>
-          <li className='nav-item'>
+          {/* <li className='nav-item'>
             <a href='#'>Contact</a>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <button className='menu-toggle' onClick={toggleMenu}>
