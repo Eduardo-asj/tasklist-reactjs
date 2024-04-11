@@ -6,6 +6,8 @@ export function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   // Ref to the navigation menu
   const menuRef = useRef(null);
+  // State to manage the theme
+  const [isDarkMode, setDarkMode] = useState(false);
 
   // Function to toggle the visibility of the navigation menu
   const toggleMenu = () => {
@@ -26,6 +28,11 @@ export function Header() {
     }
   };
 
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!isDarkMode);
+  };
+
   // Effect to add event listeners when the component mounts
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -38,7 +45,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className='header'>
+    <header className={`header ${isDarkMode ? 'dark' : ''}`}>
       <div className='logo-container'>
         <img src='/logo.svg' alt='to.do' className='logo' />
         <h1 className='title'>To-Do App</h1>
@@ -58,6 +65,9 @@ export function Header() {
       </nav>
       <button className='menu-toggle' onClick={toggleMenu}>
         {isMenuOpen ? 'Close Menu' : 'Open Menu'}
+      </button>
+      <button className='theme-toggle' onClick={toggleDarkMode}>
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
       </button>
     </header>
   );
