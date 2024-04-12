@@ -59,6 +59,9 @@ export function Header() {
             <a href='#'>About</a>
           </li>
           <li className='nav-item'>
+            <a href='#'>Products</a>
+          </li>
+					<li className='nav-item'>
             <a href='#'>Contact</a>
           </li>
         </ul>
