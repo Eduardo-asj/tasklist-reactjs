@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FiTrash, FiCheckSquare, FiEdit } from 'react-icons/fi';
 import '../styles/tasklist.scss';
 
@@ -64,6 +64,11 @@ export function TaskList() {
     setTasks(updatedTasks);
   }
 
+  function handleClearCompletedTasks() {
+    const filteredTasks = tasks.filter((task) => !task.isComplete);
+    setTasks(filteredTasks);
+  }
+
   return (
     <section className='task-list container'>
       <header>
@@ -86,6 +91,9 @@ export function TaskList() {
         </div>
         <button onClick={handleMarkAllTasksAsComplete}>
           Mark All as Complete
+        </button>
+        <button onClick={handleClearCompletedTasks}>
+          Clear Completed Tasks
         </button>
       </header>
 
