@@ -56,6 +56,11 @@ export function TaskList() {
     setEditingTaskTitle('');
   }
 
+  function handleToggleEditMode(id: number) {
+    setEditingTaskId((prevId) => (prevId === id ? null : id));
+    setEditingTaskTitle('');
+  }
+
   function handleMarkAllTasksAsComplete() {
     const updatedTasks = tasks.map((task) => ({
       ...task,
@@ -142,6 +147,13 @@ export function TaskList() {
                 onClick={() => handleRemoveTask(task.id)}
               >
                 <FiTrash size={16} />
+              </button>
+
+              <button
+                type='button'
+                onClick={() => handleToggleEditMode(task.id)}
+              >
+                Toggle Edit
               </button>
             </li>
           ))}
