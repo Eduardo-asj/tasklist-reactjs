@@ -97,9 +97,9 @@ export function TaskList() {
         <button onClick={handleMarkAllTasksAsComplete}>
           Mark All as Complete
         </button>
-        <button onClick={handleClearCompletedTasks}>
+        {/* <button onClick={handleClearCompletedTasks}>
           Clear Completed Tasks
-        </button>
+        </button> */}
       </header>
 
       <main>
